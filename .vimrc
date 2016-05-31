@@ -8,10 +8,7 @@
 " Learning Guide: 
 " http://benmccormick.org/learning-vim-in-2014/
 
-
-" Gotta be first
 set nocompatible
-
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -19,17 +16,22 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'tpope/vim-sensible'
+
 " Look
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
-" Plugin 'vir-airline/vim-airline'
+Plugin 'chriskempson/base16-vim'
+Plugin 'vir-airline/vim-airline'
+Plugin 'vir-airline/vim-airline-themes'
 
 " Nerdtree
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 
-" Fugitive (Git Binding)
+" Git 
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 
 " Syntastic
 Plugin 'scrooloose/syntastic'
@@ -37,9 +39,15 @@ Plugin 'scrooloose/syntastic'
 " Tmux
 Plugin 'christoomey/vim-tmux-navigator'
 
+" Go
+Plugin 'fatih/vim-go'
+
 " Provides easy shortcuts for commenting out lines
 Plugin 'scrooloose/nerdcommenter'
 
+Plugin 'kien/ctrlp.vim'
+
+Plugin 'Shougo/neocomplete.vim'
 " Great helpful autocompletion
 " Plugin 'Valloric/YouCompleteMe' 
 
@@ -112,6 +120,7 @@ nnoremap ^ <nop>
 
 " Leader Shortcuts
 let mapleader=","       " leader is comma
+let maplocalleader = '_'
 
 " jk is escape
 inoremap jk <esc>
@@ -126,12 +135,48 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Backups
 " =======
-
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
+
+if has("mouse")
+    set mouse=a
+endif
+
+""" Scheme
+
+set background=dark
+let base16colorspace=256
+set t_Co=256
+let g:airline_theme = 'base16'
+
+try
+    colorscheme base16-tomorrow
+catch  /^Vim\%((\a\+)\)\=:E185/
+    colorscheme desert
+endtry
+
+
+""" Omni-Completion
+set ofu=syntaxcomplete#Complete
+set completeopt=menu
+
+""" Fugitive
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+nnoremap <silent> <leader>gr :Gread<CR>
+nnoremap <silent> <leader>gw :Gwrite<CR>
+nnoremap <silent> <leader>ge :Gedit<CR>
+
+
+
+""" neocomplete
+let g:neocomplete#enable_at_startup = 1
 
 let g:airline_powerline_fonts = 1
 
@@ -141,11 +186,12 @@ let g:airline_detect_paste=1
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
 
-" ----- jistr/vim-nerdtree-tabs -----
-" Open/close NERDTree Tabs with \t
-nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
-" To have NERDTree always open on startup
-let g:nerdtree_tabs_open_on_console_startup = 0
+""" NerdTree
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeHijackNetrw = 1
+let NERDTreeMinimalUI = 1
+nnoremap <silent> t :NERDTree<CR>
+
 
 " ----- scrooloose/syntastic settings -----
 let g:syntastic_error_symbol = '✘'
