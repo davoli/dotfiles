@@ -147,16 +147,16 @@ endif
 
 """ Scheme
 
-set background=dark
-let base16colorspace=256
-set t_Co=256
-let g:airline_theme = 'base16'
-
-try
-    colorscheme base16-tomorrow
-catch  /^Vim\%((\a\+)\)\=:E185/
-    colorscheme desert
-endtry
+" set background=dark
+" let base16colorspace=256
+" set t_Co=256
+" let g:airline_theme = 'base16'
+" 
+" try
+"     colorscheme base16-tomorrow
+" catch  /^Vim\%((\a\+)\)\=:E185/
+"     colorscheme desert
+" endtry
 
 
 """ Omni-Completion
