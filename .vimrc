@@ -22,8 +22,6 @@ Plugin 'tpope/vim-sensible'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'chriskempson/base16-vim'
-Plugin 'vir-airline/vim-airline'
-Plugin 'vir-airline/vim-airline-themes'
 
 " Nerdtree
 Plugin 'scrooloose/nerdtree'
