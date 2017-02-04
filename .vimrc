@@ -23,7 +23,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'chriskempson/base16-vim'
 Plugin 'vir-airline/vim-airline'
-Plugin 'vir-airline/vim-airline-themes'
+" Plugin 'vir-airline/vim-airline-themes'
 
 " Nerdtree
 Plugin 'scrooloose/nerdtree'
@@ -47,9 +47,11 @@ Plugin 'scrooloose/nerdcommenter'
 
 Plugin 'kien/ctrlp.vim'
 
-Plugin 'Shougo/neocomplete.vim'
-" Great helpful autocompletion
-" Plugin 'Valloric/YouCompleteMe' 
+" Syntax Checking
+Plugin 'w0rp/ale'
+
+" Autocomplete
+Plugin 'Valloric/YouCompleteMe' 
 
 call vundle#end()
 
